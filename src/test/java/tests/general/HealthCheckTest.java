@@ -1,6 +1,8 @@
-package tests;
+package tests.general;
 
+import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
+import tests.Routes;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.is;
@@ -10,9 +12,9 @@ public class HealthCheckTest {
     @Test
     public void healthCheck(){
         when().
-                get("http://localhost:8080/api/health").
+                get(Routes.HEALTH).
         then().
-                statusCode(200)
+                statusCode(HttpStatus.SC_OK)
                 .body("status", is("ok"));
     }
 
