@@ -5,6 +5,7 @@ import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import tests.Routes;
 
+import static factory.UserFactory.generateUser;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
@@ -51,7 +52,7 @@ public class UserFunctionalTest {
 
     @Test
     public void addNewUser(){
-        User user = new User("antonio","silva",19,"antonio@gmail.com");
+        User user = generateUser();
 
         given().
                 header("Content-Type", "application/json").
