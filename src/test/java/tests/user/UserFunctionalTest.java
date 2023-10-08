@@ -1,5 +1,6 @@
 package tests.user;
 
+import domain.User;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
 import tests.Routes;
@@ -50,15 +51,11 @@ public class UserFunctionalTest {
 
     @Test
     public void addNewUser(){
-        
+        User user = new User("antonio","silva",19,"antonio@gmail.com");
+
         given().
                 header("Content-Type", "application/json").
-                body("{\n" +
-                "    \"firstname\":\"ana\",\n" +
-                "    \"lastname\":\"silva\",\n" +
-                "    \"age\":33,\n" +
-                "    \"email\":\"ana@email.com\"\n" +
-                "}").
+                body(user).
         when().
                 post(Routes.ADD_USER).
         then().
