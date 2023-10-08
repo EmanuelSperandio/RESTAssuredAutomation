@@ -48,4 +48,21 @@ public class UserFunctionalTest {
                 body("message", is("Can't find user with id= 99999"));
     }
 
+    @Test
+    public void addNewUser(){
+        
+        given().
+                header("Content-Type", "application/json").
+                body("{\n" +
+                "    \"firstname\":\"ana\",\n" +
+                "    \"lastname\":\"silva\",\n" +
+                "    \"age\":33,\n" +
+                "    \"email\":\"ana@email.com\"\n" +
+                "}").
+        when().
+                post(Routes.ADD_USER).
+        then().
+                statusCode(HttpStatus.SC_CREATED);
+    }
+
 }
