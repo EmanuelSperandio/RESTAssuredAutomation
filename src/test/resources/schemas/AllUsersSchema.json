@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generated schema for Root",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "firstname": {
+        "type": "string"
+      },
+      "lastname": {
+        "type": "string"
+      },
+      "age": {
+        "type": "number"
+      },
+      "email": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "firstname",
+      "lastname",
+      "age",
+      "email"
+    ]
+  }
+}

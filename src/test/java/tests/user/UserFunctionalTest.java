@@ -63,4 +63,38 @@ public class UserFunctionalTest {
                 statusCode(HttpStatus.SC_CREATED);
     }
 
+    @Test
+    public void deleteUser(){
+        given().
+                pathParam("id", 1).
+        when().
+                delete(Routes.DELETE_USER).
+        then().
+                statusCode(HttpStatus.SC_NO_CONTENT);
+    }
+
+    @Test
+    public void deleteNonExistentUser(){
+        given().
+                pathParam("id",99999).
+        when().
+                delete(Routes.DELETE_USER).
+        then().
+                statusCode(HttpStatus.SC_NOT_FOUND);
+    }
+
+    @Test
+    public void updateUser(){
+        User user = generateUser();
+
+        given().
+                header("Content-Type","application/json").
+                pathParam("id", 20).
+                body(user).
+        when().
+                put(Routes.UPDATE_USER).
+        then().
+                statusCode(HttpStatus.SC_OK);
+    }
+
 }
