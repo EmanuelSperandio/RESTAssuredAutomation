@@ -1,6 +1,7 @@
 package tests.user;
 
 import domain.User;
+import io.qameta.allure.Description;
 import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.testng.annotations.Test;
@@ -83,6 +84,7 @@ public class UserFunctionalTest extends BaseTest{
                 statusCode(HttpStatus.SC_NOT_FOUND);
     }
 
+    @Description("Este teste é capaz de realizar a atualização dos dados de um usuário já existente.")
     @Test(groups = "functional")
     public void updateUser(){
         User user = generateUser();
@@ -93,7 +95,7 @@ public class UserFunctionalTest extends BaseTest{
         when().
                 put(Routes.UPDATE_USER).
         then().
-                statusCode(HttpStatus.SC_OK);
+                statusCode(HttpStatus.SC_CREATED);
     }
 
 
