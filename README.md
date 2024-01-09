@@ -5,7 +5,7 @@ A simple example of automation test using rest-assured to check our API. I creat
 Tests:
 - Health Check  
 - Functional Test   
-- Contract Test    [IN PROGRESS]
+- Contract Test  
 
 Libraries used 
 ---------------------
