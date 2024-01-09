@@ -9,13 +9,14 @@ import static org.hamcrest.Matchers.is;
 
 public class HealthCheckTest {
 
-    @Test
+    @Test(groups = "health")
     public void healthCheck(){
         when().
                 get(Routes.HEALTH).
         then().
-                statusCode(HttpStatus.SC_OK)
-                .body("status", is("ok"));
+                statusCode(HttpStatus.SC_OK).
+                body("status", is("ok"));
     }
+
 
 }

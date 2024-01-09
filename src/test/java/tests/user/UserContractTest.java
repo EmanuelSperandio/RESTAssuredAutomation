@@ -9,7 +9,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 public class UserContractTest {
 
-    @Test
+    @Test(groups = "contract")
     public void contractAllUsersTest(){
         when().
                 get(Routes.ALL_USERS).
@@ -18,10 +18,10 @@ public class UserContractTest {
                 body(matchesJsonSchemaInClasspath("schemas/AllUsersSchema.json"));
     }
 
-    @Test
+    @Test(groups = "contract")
     public void contractSingleUserTest(){
         given().
-                pathParam("id",1).
+                pathParam("id",getExistentUserID()).
         when().
                 get(Routes.SINGLE_USER).
         then().
@@ -29,5 +29,13 @@ public class UserContractTest {
                 body(matchesJsonSchemaInClasspath("schemas/SingleUserSchema.json"));
     }
 
+    public int getExistentUserID(){
+        return when().
+                    get(Routes.ALL_USERS).
+                then().
+                    statusCode(HttpStatus.SC_OK).
+                    extract().
+                    path("[1].id");
+    }
 
 }
